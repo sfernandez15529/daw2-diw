@@ -1,0 +1,658 @@
+:root {
+  --principal: #2563eb;
+  --secundari: #f59e0b;
+  --fonsClar: #f8fafc;
+  --fonsFosc: #0f172a;
+  --textFonsClar: #0f172a;
+  --textFonsFosc: #f8fafc;
+  --neutre: #e2e8f0;
+  --correcte: #16a34a;
+  --info: #0ea5e9;
+  --avis: #f59e0b;
+  --error: #dc2626;
+}
+
+/* Generals */
+
+body {
+  font-family: "Martel Sans", sans-serif;
+  color: var(--textFonsClar);
+  background-color: var(--fonsClar);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+body,
+header,
+nav,
+main,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+form,
+menu,
+div,
+ul,
+li,
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+label,
+input,
+select,
+textarea,
+button,
+img,
+a,
+small,
+strong {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+}
+
+small {
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+a {
+  color: var(--principal);
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+/* Focus visible: enllaços i botons */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--secundari);
+  outline-offset: 2px;
+}
+
+/* Menú d'accions: els enllaços es veuen com a botons secundaris */
+
+menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+menu a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 24px;
+  border: 1.5px solid var(--principal);
+  border-radius: 8px;
+  color: var(--principal);
+  font-weight: 600;
+  transition: background-color 180ms ease-in-out;
+}
+
+menu a:hover {
+  color: var(--textFonsClar);
+  background: var(--secundari);
+}
+
+menu a:active {
+  color: var(--textFonsClar);
+  background: var(--neutre);
+}
+
+/* Botons principals */
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 24px;
+  border: 1.5px solid transparent;
+  border-radius: 8px;
+  background: var(--principal);
+  color: var(--textFonsFosc);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 180ms ease-in-out;
+}
+
+button:hover {
+  color: var(--textFonsClar);
+  background: var(--secundari);
+}
+
+button:active {
+  color: var(--textFonsClar);
+  background: var(--neutre);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+form button {
+  height: 48px;
+}
+
+/* Camps de formulari */
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  padding: 0 16px;
+  font: inherit;
+  color: var(--textFonsClar);
+  background: var(--fonsClar);
+  border: 1px solid var(--neutre);
+  border-radius: 8px;
+  transition:
+    border-color 180ms ease-in-out,
+    box-shadow 180ms ease-in-out;
+}
+
+textarea {
+  height: auto;
+  min-height: 112px;
+  padding: 16px;
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--textFonsClar);
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--principal);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--principal);
+  box-shadow: 0 0 0 1px var(--principal);
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background: var(--neutre);
+  cursor: not-allowed;
+}
+
+/* Cercador principal */
+
+main > header > form {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  color: var(--textFonsClar);
+  background: var(--fonsClar);
+  border-radius: 16px;
+  box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+main > header > form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+main > header > form > button {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  main > header > form {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  main > header > form > div {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  main > header > form > div:first-child {
+    flex-grow: 2;
+  }
+
+  main > header > form > button {
+    flex: 0 0 auto;
+    width: auto;
+  }
+}
+
+/* Capçalera pàgina */
+
+body > header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding: 8px max(10%, calc((100% - 1200px) / 2)) 0;
+  background: var(--fonsClar);
+  border-bottom: 1px solid var(--neutre);
+}
+
+/* Logotip */
+
+body > header > a,
+body > header > img {
+  order: 0;
+}
+
+body > header > a {
+  display: flex;
+  color: var(--textFonsClar);
+  font-weight: 700;
+}
+
+body > header > img,
+body > header > a > img {
+  width: auto;
+  height: 50px;
+}
+
+body > header > menu {
+  order: 1;
+  flex-wrap: nowrap;
+}
+
+body > header > menu a,
+body > header > menu button {
+  height: 36px;
+  padding: 0 16px;
+}
+
+body > header > nav {
+  order: 2;
+  flex: 0 0 100%;
+  overflow-x: auto;
+}
+
+body > header nav ul {
+  display: flex;
+  gap: 24px;
+}
+
+body > header nav a,
+body > header nav strong {
+  display: block;
+  padding: 8px 0 10px;
+  border-bottom: 3px solid transparent;
+  color: var(--textFonsClar);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+body > header nav a:hover {
+  color: var(--principal);
+}
+
+body > header nav strong {
+  border-color: var(--principal);
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  body > header {
+    flex-wrap: nowrap;
+    height: 72px;
+    padding-block: 0;
+  }
+
+  body > header > nav {
+    order: 1;
+    flex: 1 1 auto;
+    align-self: stretch;
+    display: flex;
+    align-items: flex-end;
+    margin-left: 32px;
+  }
+
+  body > header > menu {
+    order: 2;
+  }
+
+  body > header > menu a,
+  body > header > menu button {
+    height: 40px;
+    padding: 0 24px;
+  }
+}
+
+/* Cos principal */
+
+main {
+  flex: 1 0 auto;
+  width: calc(100% - 2 * 10%);
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-block: 24px 64px;
+}
+
+main > header {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding: 32px 16px;
+  background: var(--neutre);
+  border-radius: 12px;
+}
+
+main > header > div > h1 {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 700;
+}
+
+main > header > div > p {
+  font-size: 1.125rem;
+}
+
+@media (min-width: 768px) {
+  main > header {
+    min-height: 420px;
+    padding: 48px 32px;
+  }
+}
+
+/* Bloc títol i targetes */
+
+main > section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-block: 64px;
+}
+
+main > section > h2 {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 1.5rem;
+}
+
+main > section > h2 a {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  main > section {
+    gap: 32px;
+  }
+
+  main > section > h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Targeta allotjament */
+
+main > section > article {
+  position: relative;
+  flex: 0 0 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 8px 16px;
+  background: var(--fonsClar);
+  border: 1px solid var(--neutre);
+  border-radius: 8px;
+  transition: box-shadow 180ms ease-in-out;
+}
+
+main > section > article:hover {
+  box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+main > section > article > img {
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+}
+
+main > section > article > h3,
+main > section > article > p,
+main > section > article > footer {
+  padding-inline: 8px;
+}
+
+main > section > article > h3 {
+  margin-top: 8px;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+main > section > article > p {
+  font-size: 0.875rem;
+  color: var(--textFonsClar);
+}
+
+@media (min-width: 768px) {
+  main > section > article {
+    flex: 0 0 calc((100% - 32px) / 2);
+  }
+}
+
+@media (min-width: 1200px) {
+  main > section > article {
+    flex: 0 0 calc((100% - 96px) / 4);
+  }
+}
+
+/* Peu targeta allotjament */
+
+article footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+article > footer > small {
+  margin-right: auto;
+}
+
+/* Botó favorit */
+
+main article > button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--fonsClar);
+  color: var(--error);
+}
+
+main article > button:hover {
+  background: var(--neutre);
+}
+
+/* Targetes destinacions populars */
+
+main > section > figure {
+  position: relative;
+  flex: 0 0 calc(50% - 8px);
+  overflow: hidden;
+  border-radius: 12px;
+  transition: box-shadow 180ms ease-in-out;
+}
+
+main > section > figure:hover {
+  box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+main > section > figure > img {
+  aspect-ratio: 3 / 4;
+}
+
+main > section > figure > figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background: var(--fonsFosc);
+  color: var(--textFonsFosc);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+main > section > figure small {
+  color: var(--neutre);
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  main > section > figure {
+    flex: 0 0 calc((100% - 96px) / 4);
+  }
+}
+
+/* Peu pàgina */
+
+body > footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px 24px;
+  padding: 32px max(10%, calc((100% - 1200px) / 2)) 24px;
+  background: var(--fonsFosc);
+  color: var(--textFonsFosc);
+  border-top: 1px solid var(--neutre);
+}
+
+body > footer > section {
+  flex: 1 1 calc(50% - 12px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+body > footer img {
+  width: auto;
+  height: 50px;
+}
+
+body > footer h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+body > footer small {
+  color: var(--neutre);
+}
+
+body > footer ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+body > footer a {
+  color: var(--neutre);
+}
+
+body > footer a:hover {
+  color: var(--secundari);
+  text-decoration: underline;
+}
+
+body > footer > div {
+  flex: 0 0 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--neutre);
+  color: var(--neutre);
+}
+
+body > footer > div > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  body > footer > section {
+    flex: 1 1 0;
+  }
+
+  body > footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+/* Sense animacions */
+
+@media (prefers-reduced-motion: reduce) {
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  article,
+  figure {
+    transition: none;
+  }
+}
